@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title></title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular.min.js"></script>
+    <!-- Angular -->
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
+    <!-- Firebase -->
+
+    <script src="js/tictactoe.js"></script>
+    <!-- Board logic -->
+
+   
+</head>
+
+<style>
+
+  #mainBox{
+            width: 320px;
+            height: 320px;
+            float: left;
+        }
+
+#mainBox1 {
+             width: 320px;
+            height: 320px;
+            float: right;
+
+
+}
+        .square{
+            width: 100px;
+            height: 100px;
+            border: 2px solid teal;
+            display: inline-block;
+        }
+
+         .box{
+            width: 100px;
+            height: 100px;
+            border: 2px solid teal;
+            display: inline-block;
+        }
+        .xSelected{
+            background: url(http://www.picgifs.com/clip-art/cartoons/south-park/clip-art-south-park-478352.jpg);
+            background-size: 100px 100px;
+        background-repeat: no-repeat;
+        }
+        .oSelected{
+            background: url(http://cdn.collider.com/wp-content/uploads/mr-burns-simpsons-01-479x600.jpg);
+            background-size: 100px 100px;
+        background-repeat: no-repeat;
+        }
+
+
+</style>
+<body ng-app="TicTacApp" ng-model="gameContainer">
+
+<div ng-controller="TicTacCtrl">
+
+    <div id="left_div">
+        <span id="spyname" ng-click="currentPlayer('left')">Ike</span>
+        <p>Ike Counter: {{gameContainer.wsWinC}}</p>
+        <div>{{showLeft}}</div>
+    </div>
+
+    <div id="right_div">
+        <span id="spyname" ng-click="currentPlayer('right')">Burns</span>
+        <p>Burns Counter: {{gameContainer.bsWinC}}</p>
+        <div>{{showRight}}</div>
+    </div>
+
+<button id="btn_style" ng-click="gameStart()">Start Game</button>
+<button id="btn_style" ng-click="gameRestart()">Reset board</button>
+<button id="btn_style" ng-click="clearData()">Clear data</button>
+
+
+
+    <div id="mainBox1" >
+    <div ng-class="{box:true, xSelected:eachCell.status=='W', oSelected: eachCell.status =='B'}" ng-repeat="eachCell in gameContainer.boardArray"
+    ng-click="playerPicks(eachCell)"
+    ng-bind="box == '' ? '&nbsp;' : box">
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>

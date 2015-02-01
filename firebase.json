@@ -1,0 +1,9 @@
+{
+  "firebase": "toucansam",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
