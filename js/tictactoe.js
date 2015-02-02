@@ -26,6 +26,7 @@ $scope.playFirst = "";
 $scope.playSecond = "";
 
 
+
 // Sync this object to firebase.
 $scope.gameContainer = {
   boardArray: $scope.board,
@@ -59,7 +60,7 @@ $scope.gameStart = function(){                        // Restart game
 };
 
 
-// Three-way binding with Firebase, throws status message when synced object is changed.
+// Three-way binding with Firebase
 $scope.remoteGameContainer.$bindTo($scope,  "gameContainer");
 $scope.$watch('gameContainer', function(){
 console.log('gameContainer changed!');
@@ -74,17 +75,14 @@ console.log($scope.leftWinCount);
 // gameplay function
 $scope.playerPicks = function(thisCell){                   // function playerPicks starts 
   if ((thisCell.status == "Blank") && ($scope.gameContainer.gameStatus=="Game On!")) {   // check for blank cells and game status is on.
-    $scope.gameContainer.moveCount = $scope.gameContainer.moveCount + 1;  // increase move counter
-    console.log($scope.gameContainer.moveCount);  
-    // Change whose turn it is
-      $scope.whoseTurn = ($scope.whoseTurn === 'X') ? 'O' : 'X';
-      console.log($scope.whoseTurn);
-      if (($scope.gameContainer.moveCount % 2) != 0){           // if move counter is odd, then it's P1 move.
-//        thisCell.status = "X";  
+      if (($scope.gameContainer.moveCount % 2) == 0){  
+        $scope.gameContainer.moveCount++  // increase move counter
+        console.log($scope.gameContainer.moveCount);           // if move counter is odd, then it's P1 move.
         thisCell.status = $scope.gameContainer.play1st;
         $scope.gameContainer.p1Pt = $scope.gameContainer.p1Pt + thisCell.pt ;         // increase P1 points.
-      } else if (($scope.gameContainer.moveCount % 2) == 0){        // if move counter is even, then it's P2 move.
-//        thisCell.status = "O";
+      } else if (($scope.gameContainer.moveCount % 2) != 0){        // if move counter is even, then it's P2 move.
+        $scope.gameContainer.moveCount++  // increase move counter
+        console.log($scope.gameContainer.moveCount); 
         thisCell.status = $scope.gameContainer.play2nd;
         $scope.gameContainer.p2Pt = $scope.gameContainer.p2Pt + thisCell.pt ;         // increase P2 points.
       } ;
@@ -133,11 +131,11 @@ $scope.currentPlayer = function(who){                     // Determine left or r
 $scope.firstPlayerWin = function(){                       // First player won
   $scope.gameContainer.gameStatus="First Player Wins!";
     if ($scope.gameContainer.play1st == "W") {
-      $scope.showLeft = "White Spy Wins!";
+      $scope.showLeft = "Red Wins!";
       $scope.gameContainer.leftWinC = $scope.gameContainer.leftWinC + 1;
       console.log($scope.gameContainer.leftWinC);
     } else if ($scope.gameContainer.play1st == "B") {
-      $scope.showRight = "Black Spy Wins!";
+      $scope.showRight = "Orange Wins!";
       $scope.gameContainer.rightWinC ++;
     };
 };
@@ -145,18 +143,18 @@ $scope.firstPlayerWin = function(){                       // First player won
 $scope.secondPlayerWin = function(){                      // Second player won
   $scope.gameContainer.gameStatus="Second Player Wins!";
     if ($scope.gameContainer.play2nd == "W") {
-      $scope.showLeft = "White Spy Wins!";
+      $scope.showLeft = "Red Wins!";
       $scope.gameContainer.leftWinC = $scope.gameContainer.leftWinC + 1;
     } else if ($scope.gameContainer.play2nd == "B") {
-      $scope.showRight = "Black Spy Wins!";
+      $scope.showRight = "Orange Wins!";
       $scope.gameContainer.rightWinC ++;
     };
 };
 
 $scope.gameOver = function(){                         // Game Over function
   $scope.gameContainer.gameStatus="TIE! Game Over!";
-  $scope.showLeft = "It's a tie";
-  $scope.showRight = "It's a tie";
+  $scope.showLeft = "Cat's Game";
+  $scope.showRight = "Cat's Game";
   console.log("tie")
 };
 

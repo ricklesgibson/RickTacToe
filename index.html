@@ -47,13 +47,13 @@
 
 
  <div id="left_div">
-        <span id="spyname" ng-click="currentPlayer('left')">Player 1</span>
+        <button  ng-click="currentPlayer('left')">Player 1</button>
         <p>Player 1 Win Counter: {{gameContainer.leftWinC}}</p>
         <div>{{showLeft}}</div>
 </div>
 
 <div id="right_div">
-        <span id="spyname" ng-click="currentPlayer('right')">Player 2</span>
+        <button ng-click="currentPlayer('right')">Player 2</button>
         <p>Player 2 Win Counter: {{gameContainer.rightWinC}}</p>
         <div>{{showRight}}</div>
 </div>
