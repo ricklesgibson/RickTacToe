@@ -1,1 +1,80 @@
+
+
+
+#btn_style {
+  
+  margin: 20px;
+  border-radius: 6px;
+  font-family: helvetica;
+}
+#container {
+    width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 40px;  
+    
+}
+
+#buttons {
+
+  width: 100px;
+  height: 100px;
+  float: left;
+  
+}
+
+#title {
+  margin: 0 auto;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+.red {
+    background-color: #3d4250;
+}
+
+#left_div {
+  
+  width: 100px;
+  height: 200px;
+  margin: 0px;
+  
+}
+
+#right_div {
+
+
+   width: 100px;
+  height: 200px;
+  
+}
+
+
+#mainBox1 {
+             width: 320px;
+            height: 320px;
+            float: right;
+
+
+}
+        
+
+         .box{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            display: inline-block;
+            
+        }
+        .xSelected{
+            background-color: #dc685a;  
+            background-size: 100px 100px;
+        background-repeat: no-repeat;
+        }
+        .oSelected{
+            background-color: #ecaf4f;
+            background-size: 100px 100px;
+        background-repeat: no-repeat;
+        }
+
   
